@@ -1,0 +1,195 @@
+/* ============================================
+   css/sections.css
+   Wife lines, message, rangoli, countdown
+   ============================================ */
+
+/* ── WIFE LINES ── */
+.wife-lines {
+  background: rgba(255,255,255,.02);
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.lines-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 18px;
+}
+
+.line-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+  cursor: default;
+}
+.line-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(233,30,140,.2);
+}
+.line-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #e91e8c, #ff6b00, #ffd700);
+}
+
+.line-emoji { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+.line-text {
+  font-size: .9rem;
+  color: rgba(255,255,255,.8);
+  line-height: 1.7;
+  font-style: italic;
+}
+.line-text strong { color: #ffd700; font-style: normal; }
+
+/* ── MESSAGE SECTION ── */
+.message-section { /* inherits section padding */ }
+
+.msg-card {
+  max-width: 660px;
+  margin: 0 auto;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 24px;
+  padding: clamp(26px,5vw,52px);
+  position: relative;
+  overflow: hidden;
+}
+/* corner accents */
+.msg-card::before {
+  content: '';
+  position: absolute; top:-2px; left:-2px;
+  width:100px; height:100px;
+  background: conic-gradient(from 135deg, #e91e8c,#ff6b00, transparent 50%);
+  border-radius: 24px 0 0 0;
+  opacity: .5;
+}
+.msg-card::after {
+  content: '';
+  position: absolute; bottom:-2px; right:-2px;
+  width:100px; height:100px;
+  background: conic-gradient(from 315deg, #00c9c9,#9c27b0, transparent 50%);
+  border-radius: 0 0 24px 0;
+  opacity: .4;
+}
+
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 6rem;
+  line-height: .5;
+  color: #e91e8c;
+  opacity: .2;
+  display: block;
+  margin-bottom: -14px;
+}
+
+.msg-text {
+  font-size: clamp(.9rem,2.5vw,1.15rem);
+  line-height: 2;
+  color: rgba(255,255,255,.82);
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 22px;
+}
+.msg-hl { color: #ffd700; font-weight: 600; }
+
+.msg-sig {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.3rem,4vw,1.9rem);
+  color: #e91e8c;
+  text-align: right;
+}
+
+/* heart row */
+.heart-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 1.6rem;
+  margin: 32px 0 0;
+}
+.heart-row span { animation: heartPop 1.4s ease-in-out infinite; display: inline-block; }
+.heart-row span:nth-child(2){animation-delay:.2s}
+.heart-row span:nth-child(3){animation-delay:.4s}
+.heart-row span:nth-child(4){animation-delay:.6s}
+@keyframes heartPop {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.35); filter: drop-shadow(0 0 10px #e91e8c); }
+}
+
+/* ── RANGOLI ── */
+.rangoli-section { text-align: center; padding: 60px 20px; }
+
+.rangoli-wrap {
+  max-width: 280px;
+  margin: 0 auto 16px;
+  animation: slowSpin 20s linear infinite;
+  filter: drop-shadow(0 0 28px rgba(255,215,0,.4));
+}
+@keyframes slowSpin { to { transform: rotate(360deg); } }
+
+/* ── COUNTDOWN ── */
+.countdown-section {
+  text-align: center;
+  background: linear-gradient(180deg, rgba(15,0,25,.95), #06000f);
+}
+
+.countdown-grid {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.count-box {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  padding: 16px 18px;
+  min-width: 80px;
+  text-align: center;
+  transition: transform .3s;
+}
+.count-box:hover { transform: translateY(-5px); }
+
+.count-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff6b00, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  display: block;
+}
+.count-lbl {
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-top: 3px;
+  display: block;
+}
+
+#cdmsg {
+  margin-top: 18px;
+  color: rgba(255,255,255,.5);
+  font-size: .82rem;
+  letter-spacing: .1em;
+}
+
+@media (max-width: 480px) {
+  .count-box { min-width: 65px; padding: 13px 10px; }
+  .count-num  { font-size: 2.1rem; }
+}

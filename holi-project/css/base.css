@@ -1,0 +1,162 @@
+/* ============================================
+   css/base.css
+   Global reset, variables, fonts, cursor, utils
+   ============================================ */
+
+/* ── CSS VARIABLES ── */
+:root {
+  --mg:   #e91e8c;
+  --sf:   #ff6b00;
+  --gd:   #ffd700;
+  --tl:   #00c9c9;
+  --pu:   #9c27b0;
+  --gn:   #43e97b;
+  --pk:   #ff4081;
+  --rd:   #ff1744;
+  --dark: #06000f;
+}
+
+/* ── RESET ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark);
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  cursor: none;
+}
+
+/* ── PARTICLE CANVAS ── */
+#particleCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor-dot {
+  position: fixed;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  position: fixed;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(255, 200, 0, 0.5);
+}
+
+/* ── SECTION COMMON ── */
+section {
+  position: relative;
+  z-index: 10;
+  padding: 70px 20px;
+}
+.section-label {
+  text-align: center;
+  font-size: .62rem;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+  color: var(--gd);
+  opacity: .7;
+  margin-bottom: 10px;
+}
+.section-title {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-style: italic;
+  color: #fff;
+  margin-bottom: 40px;
+  line-height: 1.1;
+}
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .92);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+}
+.lightbox.active { display: flex; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 16px;
+  border: 3px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 0 80px rgba(233, 30, 140, .3);
+  animation: lbScale .3s cubic-bezier(.34, 1.56, .64, 1);
+}
+.lb-close {
+  position: absolute;
+  top: 18px; right: 22px;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, .6);
+  cursor: pointer;
+  line-height: 1;
+}
+.lb-close:hover { color: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 36px 20px;
+  font-size: .68rem;
+  letter-spacing: .3em;
+  color: rgba(255, 255, 255, .2);
+  border-top: 1px solid rgba(255, 255, 255, .05);
+}
+footer p + p { margin-top: 6px; font-size: .58rem; opacity: .5; }
+
+/* ── SCROLL REVEAL ANIMATION ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s, transform .7s;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes lbScale {
+  from { transform: scale(.7); }
+  to   { transform: scale(1); }
+}
+
+/* ── RESPONSIVE ── */
+@media (hover: none) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-ring { display: none; }
+}
+@media (max-width: 480px) {
+  section { padding: 50px 16px; }
+}
