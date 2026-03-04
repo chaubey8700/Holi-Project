@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>💕 Meri Jaan Ki Holi 💕</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400;1,700&family=Noto+Sans+Devanagari:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/music.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cdot"></div>
+  <div class="cursor-ring" id="cring"></div>
+
+  <!-- ════════════════ LOGIN PAGE ════════════════ -->
+  <div id="loginPage">
+    <div class="lo1"></div>
+    <div class="lo2"></div>
+    <div class="lo3"></div>
+    <div class="login-card">
+      <span class="login-emoji">🎨</span>
+      <h1 class="login-title">Holi Secret 🌈</h1>
+      <p class="login-sub">SIRF KHAAS LOGON KE LIYE</p>
+      <div class="login-hint">
+        😂 <strong>Hint:</strong> Woh rang jo tumhare dil mein bhi hai<br>
+        aur mere cheeks pe bhi... 💛<br>
+        <small>(Koi bhi likho — andar aao! 😜)</small>
+      </div>
+      <input type="password" class="login-input" id="pwdIn"
+        placeholder="🔐 Password daalo jaanu..." maxlength="30">
+      <button class="login-btn" onclick="doLogin()">
+        🌸 Andar Aao Meri Jaan 🌸
+      </button>
+      <div class="login-error" id="lerr"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════ MUSIC PLAYER ════════════════ -->
+  <div id="musicPlayer">
+    <div class="music-tag">🎵 Now Playing</div>
+    <div class="music-song" id="sname">Balam Pichkari</div>
+    <div class="music-controls">
+      <div class="music-btn" onclick="prevS()">⏮</div>
+      <div class="music-btn play-btn" id="pbtn" onclick="togPlay()">▶</div>
+      <div class="music-btn" onclick="nextS()">⏭</div>
+      <div class="music-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" id="pfill"></div>
+        </div>
+      </div>
+    </div>
+    <div class="visualizer">
+      <div class="vbar paused"></div><div class="vbar paused"></div>
+      <div class="vbar paused"></div><div class="vbar paused"></div>
+      <div class="vbar paused"></div><div class="vbar paused"></div>
+      <div class="vbar paused"></div><div class="vbar paused"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════ HERO SECTION ════════════════ -->
+  <section class="hero">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="badge">✦ Sirf Tumhare Liye ✦</div>
+    <div class="emoji-strip">🎨 🌸 🎊 💛 🌈</div>
+    <h1 class="hero-title">Happy<em>Holi<em>My Wife</em></em></h1>
+    <p class="hero-sub">होली मुबारक हो — मेरी जान 🌺</p>
+    <div class="hero-quote">
+      <p>"Tumhare bina rang hain berang,<br>tumhare saath hi jeewan mein hain rang! 🌈❤️"</p>
+    </div>
+    <div class="scroll-cue" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+      <span>NEECHE DEKHO</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════ ORBIT GALLERY ════════════════ -->
+  <section class="orbit-section" id="gallery">
+    <p class="section-label reveal">Humari Pyaari Yaadein 📸</p>
+    <h2 class="section-title reveal">Teri <em>Tasveerein</em> 💕</h2>
+    <div class="orbit-wrapper reveal" id="orbitWrapper">
+      <div class="orbit-ring ring1"></div>
+      <div class="orbit-ring ring2"></div>
+      <div class="orbit-ring ring3"></div>
+      <div class="orbit-center"></div>
+      <!-- Photos are injected by js/gallery.js -->
+    </div>
+  </section>
+
+  <!-- ════════════════ WIFE LINES ════════════════ -->
+  <section class="wife-lines">
+    <p class="section-label reveal">Dil Se Likhi 💌</p>
+    <h2 class="section-title reveal">Meri Wife ke Liye <em>Best Lines</em> 😍</h2>
+    <div class="lines-grid reveal">
+      <div class="line-card"><span class="line-emoji">🌈</span><p class="line-text">"Holi ke sabse sundar rang tum ho —<br><strong>mujhe koi aur rang nahi chahiye!</strong>"</p></div>
+      <div class="line-card"><span class="line-emoji">😂</span><p class="line-text">"Tumne <strong>gulaal lagaya</strong> chehra par,<br>aur dil pe bhi rang chhod diya... ab dhoye nahi dhulega! 💕"</p></div>
+      <div class="line-card"><span class="line-emoji">🎨</span><p class="line-text">"Holi ek din aati hai,<br>par <strong>tumhari yaad</strong> roz rang birangi karti hai mujhe! 🌺"</p></div>
+      <div class="line-card"><span class="line-emoji">😜</span><p class="line-text">"Balam pichkari mein woh ladki thi,<br>lekin <strong>meri asli Balam</strong> tum ho! 😘"</p></div>
+      <div class="line-card"><span class="line-emoji">💛</span><p class="line-text">"Badri ki dulhaniya ka toh pata nahi,<br>par <strong>meri dulhaniya</strong> duniya ki sabse pyaari hai! 🏆"</p></div>
+      <div class="line-card"><span class="line-emoji">🌸</span><p class="line-text">"Is Holi mein ek kaam karo —<br><strong>bas muskurate raho,</strong> baaki sab main sambhal lunga! ❤️"</p></div>
+    </div>
+  </section>
+
+  <!-- ════════════════ MESSAGE ════════════════ -->
+  <section class="message-section">
+    <p class="section-label reveal">Dil Ki Baat 💌</p>
+    <h2 class="section-title reveal">Mera Pyaar <em>Tumhare Naam</em></h2>
+    <div class="msg-card reveal">
+      <span class="quote-mark">"</span>
+      <p class="msg-text">
+        Tum mere liye <span class="msg-hl">Holi ke sabse khoobsurat rang</span> ho —<br>
+        jab tum saath hoti ho, toh puri duniya roshan lagti hai. 🌺<br><br>
+        In rangon ki tarah, tumhara pyaar mere dil mein<br>
+        <span class="msg-hl">hamesha ke liye</span> basa hua hai.<br><br>
+        Yeh Holi, yeh khushiyaan, yeh zindagi —<br>
+        sab kuch <span class="msg-hl">tumhare saath</span> hi mukammal hai. ❤️
+      </p>
+      <p class="msg-sig">— Sirf Tumhara 🌹</p>
+    </div>
+    <div class="heart-row reveal">
+      <span>❤️</span><span>🧡</span><span>💛</span><span>💚</span><span>💙</span><span>💜</span>
+    </div>
+  </section>
+
+  <!-- ════════════════ RANGOLI ════════════════ -->
+  <section class="rangoli-section">
+    <p class="section-label reveal">Rang Birangi Rangoli ✨</p>
+    <div class="rangoli-wrap reveal">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="rg1"><stop offset="0%" stop-color="#ffd700"/><stop offset="100%" stop-color="#ff6b00"/></radialGradient>
+          <radialGradient id="rg2"><stop offset="0%" stop-color="#e91e8c"/><stop offset="100%" stop-color="#9c27b0"/></radialGradient>
+          <radialGradient id="rg3"><stop offset="0%" stop-color="#00c9c9"/><stop offset="100%" stop-color="#43e97b"/></radialGradient>
+        </defs>
+        <circle cx="150" cy="150" r="18" fill="url(#rg1)"/>
+        <circle cx="150" cy="110" r="10" fill="url(#rg2)" opacity=".9"/>
+        <circle cx="150" cy="190" r="10" fill="url(#rg2)" opacity=".9"/>
+        <circle cx="110" cy="150" r="10" fill="url(#rg2)" opacity=".9"/>
+        <circle cx="190" cy="150" r="10" fill="url(#rg2)" opacity=".9"/>
+        <circle cx="122" cy="122" r="8" fill="url(#rg3)" opacity=".8"/>
+        <circle cx="178" cy="122" r="8" fill="url(#rg3)" opacity=".8"/>
+        <circle cx="122" cy="178" r="8" fill="url(#rg3)" opacity=".8"/>
+        <circle cx="178" cy="178" r="8" fill="url(#rg3)" opacity=".8"/>
+        <ellipse cx="150" cy="72" rx="12" ry="20" fill="#ff4081" opacity=".7" transform="rotate(0 150 150)"/>
+        <ellipse cx="150" cy="72" rx="12" ry="20" fill="#ff6b00" opacity=".7" transform="rotate(45 150 150)"/>
+        <ellipse cx="150" cy="72" rx="12" ry="20" fill="#ffd700" opacity=".7" transform="rotate(90 150 150)"/>
+        <ellipse cx="150" cy="72" rx="12" ry="20" fill="#43e97b" opacity=".7" transform="rotate(135 150 150)"/>
+        <ellipse cx="150" cy="72" rx="12" ry="20" fill="#00c9c9" opacity=".7" transform="rotate(180 150 150)"/>
+        <ellipse cx="150" cy="72" rx="12" ry="20" fill="#9c27b0" opacity=".7" transform="rotate(225 150 150)"/>
+        <ellipse cx="150" cy="72" rx="12" ry="20" fill="#e91e8c" opacity=".7" transform="rotate(270 150 150)"/>
+        <ellipse cx="150" cy="72" rx="12" ry="20" fill="#ff1744" opacity=".7" transform="rotate(315 150 150)"/>
+        <circle cx="150" cy="42" r="6" fill="#ffd700" opacity=".8"/>
+        <circle cx="150" cy="42" r="6" fill="#e91e8c" opacity=".8" transform="rotate(45 150 150)"/>
+        <circle cx="150" cy="42" r="6" fill="#00c9c9" opacity=".8" transform="rotate(90 150 150)"/>
+        <circle cx="150" cy="42" r="6" fill="#ff6b00" opacity=".8" transform="rotate(135 150 150)"/>
+        <circle cx="150" cy="42" r="6" fill="#9c27b0" opacity=".8" transform="rotate(180 150 150)"/>
+        <circle cx="150" cy="42" r="6" fill="#43e97b" opacity=".8" transform="rotate(225 150 150)"/>
+        <circle cx="150" cy="42" r="6" fill="#ff4081" opacity=".8" transform="rotate(270 150 150)"/>
+        <circle cx="150" cy="42" r="6" fill="#ff1744" opacity=".8" transform="rotate(315 150 150)"/>
+        <circle cx="150" cy="150" r="128" fill="none" stroke="rgba(255,215,0,.15)" stroke-width="1" stroke-dasharray="6 4"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ════════════════ COUNTDOWN ════════════════ -->
+  <section class="countdown-section">
+    <p class="section-label reveal">Holi 2026</p>
+    <h2 class="section-title reveal">Holi Ka <em>Intezaar</em></h2>
+    <div class="countdown-grid reveal">
+      <div class="count-box"><span class="count-num" id="cd-d">00</span><span class="count-lbl">Days</span></div>
+      <div class="count-box"><span class="count-num" id="cd-h">00</span><span class="count-lbl">Hours</span></div>
+      <div class="count-box"><span class="count-num" id="cd-m">00</span><span class="count-lbl">Minutes</span></div>
+      <div class="count-box"><span class="count-num" id="cd-s">00</span><span class="count-lbl">Seconds</span></div>
+    </div>
+    <p id="cdmsg"></p>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer>
+    <p>🌸 Made with ❤️ — Sirf Tumhare Liye 🌸</p>
+    <p>Click anywhere to splash colors ✨</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lbox">
+    <span class="lb-close" id="lbcl">×</span>
+    <img id="lbimg" src="" alt="">
+  </div>
+
+  <!-- JS Files — ORDER MATTERS! -->
+  <script src="js/photos.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/utils.js"></script>
+
+</body>
+</html>
